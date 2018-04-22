@@ -1,0 +1,344 @@
+
+button#button-sign {
+    margin-right: 5px
+}
+
+.navbar .btn {
+    margin: 5px
+}
+
+nav#menu {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #e3f2fd
+}
+
+.nav-link {
+    color: black
+}
+
+footer {
+    color: grey;
+    background-color: #e3f2fd
+}
+
+a {
+    color: grey
+}
+
+.navbar-toggler {
+    color: black
+}
+
+.price {
+    font-size: x-large
+}
+
+.card {
+    width: 10rem;
+    margin-bottom: 15px;
+    margin-right: 10px
+}
+
+div#popular {
+    margin-top: 20px
+}
+
+.popular-element {
+    margin-top: 13px
+}
+
+div#news {
+    margin-top: 15px
+}
+
+.image-book {
+    max-width: 100%;
+    max-height: 250px
+}
+
+.image-book-detail {
+    max-width: 100%;
+    max-height: 300px
+}
+
+/* equal card height */
+.row-equal > div[class*='col-'] {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.row-equal .card {
+   width: 100%;
+}
+
+/* ensure equal card height inside carousel */
+.carousel-inner>.row-equal.active, 
+.carousel-inner>.row-equal.next, 
+.carousel-inner>.row-equal.prev {
+    display: flex;
+}
+
+/* prevent flicker during transition */
+.carousel-inner>.row-equal.active.left, 
+.carousel-inner>.row-equal.active.right {
+    opacity: 0.5;
+    display: flex;
+}
+
+h1#register, h1#admin-title {
+    margin-top: 15px
+}
+
+h1#cathegory-title, 
+h1#search-title, 
+h1#products-title, 
+h1#messages, 
+h1#shop-card-title {
+    margin-top: 15px
+}
+
+.book-cathegory-detail {
+    margin-top: 20px
+}
+
+section#book-detail {
+    margin-top: 40px
+}
+
+div#info {
+    margin-top: 15px;
+    margin-left: 5px
+}
+
+p#author, 
+.rating-detail
+ {
+    font-size: x-large
+}
+
+p#price-detail {
+    font-size: xx-large;
+    margin-top: 40px
+}
+
+p#content-detail {
+    margin-top: 15px
+}
+
+.add-button, 
+button#update, 
+button#delete, 
+button#filter, 
+button#add, 
+.delete, 
+.update,
+.add, 
+button#reg {
+    border-color: darkgray
+}
+
+button#dropdown-rating {
+    margin-top: 1rem;
+    margin-bottom: 1rem
+}
+
+button#admin-sign {
+    border-color: darkgray;
+    max-width: 100%;
+}
+
+section#sign-in {
+    margin-top: 15rem
+}
+
+nav#nav-admin, footer#admin {
+    background-color: #e3f2fd
+}
+
+div#products, form#filter {
+    margin-top: 30px
+}
+
+panel {
+    border: 1px solid
+}
+
+.name {
+    margin-top: 2.5rem
+}
+
+.num {
+    margin-top: 2rem
+}
+
+.price-card, .delete-card  {
+    margin-top: 4rem
+}
+
+.label-num {
+    margin-left: 1rem;
+}
+
+.img-shop {
+    max-height: 150px
+}
+
+p#total-price {
+    font-size: xx-large
+}
+
+h1#shop-card-title,
+h1#shipping-title,
+h1#payment-title,
+h1#data-title,
+h1#data-sum-title {
+    margin: 15px
+}
+
+section#payment,
+form#data-form {
+    margin-bottom: 15px
+}
+
+.main-content {
+    background-color: white
+}
+
+section#chat {
+    width: 300px;
+    position: fixed;
+    bottom: 0;
+    right: 5px;
+    background: dimgrey
+}
+
+#chat > h3 {
+    text-align: center;
+    margin-top: 10px
+}
+
+#chat > #window {
+    display: none;
+    width: 300px;
+    height: 350px;
+    background-color: whitesmoke;
+    border: 1.5px solid grey;
+    border-bottom: none;
+    position: fixed;
+    bottom: 0;
+    right: 5px;
+}
+
+#window > #toolbar {
+    width: 100%;
+    height: 35px;
+    background-color: dimgrey;
+    right: 5px;
+    text-align: right
+}
+
+.fa-times {
+    margin-right: 10px;
+    margin-top: 10px
+}
+
+#admin > .chat-content{
+    background-color: darkgrey;
+    margin-left: 7.5px;
+    max-width: 80%;
+    padding: 4px;
+    border-radius: 15px;
+}
+
+#admin > .chat-name {
+    margin-left: 15px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+#user > .chat-content{
+    background-color: rgb(107, 106, 106);
+    margin-right: 7.5px;
+    max-width: 80%;
+    padding: 4px;
+    border-radius: 15px;
+    clear: right;
+    float: right;
+}
+
+#user > .chat-name {
+    margin-right: 15px;
+    margin-top: 10px;
+    font-size: 12px;
+    float: right
+}
+
+#chat-input > textarea{
+    width: 100%;
+    bottom: 0;
+    position: absolute
+}
+
+#admin-chat {
+    background-color: whitesmoke;
+    border: 1px solid grey;
+    height: 100%;
+    position: relative;
+    height: 100vh;
+}
+
+#admin-chat-input > textarea{
+    width: 100%;
+    bottom: 0;
+   position: absolute
+}
+
+#admin-chat-content {
+    height: 100vh;
+    overflow: auto
+}
+
+#user > .admin-chat-content{
+    background-color: darkgrey;
+    margin-left: 7.5px;
+    max-width: 80%;
+    padding: 4px;
+    border-radius: 15px;
+}
+
+#user > .admin-chat-name {
+    margin-left: 15px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+#customer > .admin-chat-content{
+    background-color: rgb(107, 106, 106);
+    margin-right: 7.5px;
+    max-width: 80%;
+    padding: 4px;
+    border-radius: 15px;
+    clear: right;
+    float: right;
+}
+
+#customer > .admin-chat-name {
+    margin-right: 15px;
+    margin-top: 10px;
+    font-size: 12px;
+    float: right
+}
+
+.price-add,
+.img,
+#shop-card-list,
+#shop-card-summary
+ {
+    text-align: center;
+}
+
+.fa-pencil,
+.fa-trash-o {
+    margin-right: 5px;
+}
