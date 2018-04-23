@@ -15,17 +15,18 @@
         @else
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>{{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @if (Auth::user()->hasRole("ADMIN"))
+                        <a class="dropdown-item" href="/books"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Správa produktov</a>
+                    @endif
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
                         Odhlásiť sa
                     </a>
-                    <a class="dropdown-item" href="/books">Administrátrské rozhranie</a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

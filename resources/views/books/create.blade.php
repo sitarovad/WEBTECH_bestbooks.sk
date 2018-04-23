@@ -1,4 +1,4 @@
-@extends('admin_layout.admin')
+@extends('layout.app')
 
 @section('content')
     <h1 id="admin-title" class="text-center">Pridať nový produkt</h1>
@@ -29,11 +29,19 @@
                     @endforeach
                 </select>
             </div>
+            <div class="form-group col-md-6">
+                <label for="subcathegory">Kategória</label>
+                <select class="form-control" id="subcathegory" name="subcathegory">
+                    @foreach ($subcathegories as $subcathegory)
+                        <option value="{{$subcathegory->id}}">{{ $subcathegory->name }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="quantity">Množstvo</label>
-                <input type="number" class="form-control" id="quantity" name="quantity">
+                <label for="year">Rok vydania</label>
+                <input type="date" class="form-control" id="year" name="publish_year">
             </div>
             <div class="form-group col-md-6">
                 <label for="language">Jazyk</label>

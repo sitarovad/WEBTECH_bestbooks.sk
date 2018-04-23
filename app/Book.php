@@ -18,7 +18,10 @@ class Book extends Model
         'binding',
         'code',
         'quantity',
-        'rating'];
+        'rating',
+        'language_id',
+        'availability_id',
+        'subcathegory_id'];
 
     public function subcathegory() {
         return $this->belongsTo('App\Subcathegory');

@@ -8,6 +8,8 @@ use App\Availability;
 use App\Cathegory;
 use App\Subcathegory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+
 
 class BookController extends Controller
 {
@@ -19,7 +21,9 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        return view('books.index',compact('books',$books));
+        $cathegories = Cathegory::all();
+        return view('books.index',['books' => $books,
+            'cathegories' => $cathegories]);
     }
 
     /**
@@ -35,7 +39,8 @@ class BookController extends Controller
         return view('books.create',
             ['languages' => $languages,
             'availabilities' => $availabilities,
-            'cathegories' => $cathegories]);
+            'cathegories' => $cathegories,
+            'subcathegories' => $cathegories[0]->subcathegories]);
     }
 
     /**
@@ -59,6 +64,9 @@ class BookController extends Controller
             'code' => 'required',
             'quantity' => 'required',
             'rating' => 'required',
+            'availability' => 'required',
+            'language' => 'required',
+            'subcathegory' => 'required',
         ]);
 
         $book = Book::create([
@@ -74,6 +82,9 @@ class BookController extends Controller
             'code' => $request->code,
             'quantity' => $request->quantity,
             'rating' => $request->rating,
+            'availability_id' => $request->availability,
+            'language_id' => $request->language,
+            'subcathegory_id' => $request->subcathegory,
             ]);
 
         $request->session()->flash('message', 'Nová kniha bola úspešne pridaná.');
@@ -100,7 +111,15 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('books.edit',compact('book',$book));
+        $languages = Language::all();
+        $availabilities = Availability::all();
+        $cathegories = Cathegory::all();
+        return view('books.edit',['book' => $book,
+            'languages' => $languages,
+            'availabilities' => $availabilities,
+            'cathegories' => $cathegories,
+            'subcathegories' => $cathegories[0]->subcathegories
+            ]);
     }
 
     /**
@@ -125,6 +144,9 @@ class BookController extends Controller
             'code' => 'required',
             'quantity' => 'required',
             'rating' => 'required',
+            'availability' => 'required',
+            'language' => 'required',
+            'subcathegory' => 'required',
         ]);
 
         $book->title = $request->title;
@@ -139,6 +161,9 @@ class BookController extends Controller
         $book->code = $request->code;
         $book->quantity = $request->quantity;
         $book->rating = $request->rating;
+        $book->availability_id = $request->availability;
+        $book->language_id = $request->language;
+        $book->subcathegory_id = $request->subcathegory;
         $book->save();
 
         $request->session()->flash('message', 'Údaje o knihe úspešne aktualizované.');
@@ -157,5 +182,26 @@ class BookController extends Controller
         $book->delete();
         $request->session()->flash('message', 'Kniha bola úspešne vymazaná.');
         return redirect('books');
+    }
+
+    public function getSubcathegories(Request $request) {
+        $cathegory_name = $request->input('cathegory');
+        $cathegory = Cathegory::with('subcathegories')->where('name', $cathegory_name)->first();
+        $subcathegories = $cathegory->subcathegories;
+        return response()->json(['subcathegories' => $subcathegories]);
+    }
+
+    public function filter(Request $request) {
+        $cathegory_id = Input::get('cathegory');
+        $cathegory = Cathegory::find($cathegory_id);
+        $books = $cathegory->books;
+        $cathegories = Cathegory::all();
+        if($request->title) {
+            $title = Input::get('title');
+            $books = $cathegory->books()->where('title', 'LIKE', '%' . Input::get('title') . '%')->get();
+        }
+        return view('books.index',['books' => $books,
+            'cathegories' => $cathegories]);
+
     }
 }

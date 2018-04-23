@@ -19,3 +19,5 @@ Route::resource('books', 'BookController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/getsubcategories', 'BookController@getSubcathegories');
+Route::get('/filter', 'BookController@filter')->name('filter');

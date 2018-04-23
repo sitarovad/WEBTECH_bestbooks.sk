@@ -339,7 +339,9 @@ section#chat {
 }
 
 .fa-pencil,
-.fa-trash-o {
+.fa-trash-o,
+.fa-shopping-bag,
+.fa-user-circle-o{
     margin-right: 5px;
 }
 

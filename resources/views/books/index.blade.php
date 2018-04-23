@@ -1,4 +1,4 @@
-@extends('admin_layout.admin')
+@extends('layout.app')
 
 @section('content')
     @if (Session::has('message'))
@@ -7,39 +7,23 @@
     <h1 id="products-title" class="text-center">Zoznam produktov</h1>
     <a id="add" class="btn btn-light col-md-4 offset-md-4" href="/books/create">Pridať produkt</a>
     <hr>
-    <form id="filter">
+    <form id="filter" method="GET" action="{{route('filter')}}">
+        @csrf
         <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="code">Kód</label>
-                <input type="text" class="form-control" id="code">
-            </div>
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-3 offset-md-3">
                 <label for="title">Názov knihy</label>
-                <input type="text" class="form-control" id="title">
+                <input type="text" class="form-control" id="title" name="title">
             </div>
             <div class="form-group col-md-3">
-                <label for="author">Autor</label>
-                <input type="text" class="form-control" id="author">
-            </div>
-            <div class="form-group col-md-3">
-                <label for="language">Kategória</label>
-                <select class="form-control" id="language">
-                    <option>Všetko</option>
-                    <option>Beletria</option>
-                    <option>Pre deti a mládež</option>
-                    <option>Životopisné</option>
-                    <option>Cudzojazyčné</option>
-                    <option>História</option>
-                    <option>Umenie</option>
-                    <option>Voľný čas</option>
-                    <option>Cestovanie</option>
-                    <option>Zdravie</option>
-                    <option>Učebnice</option>
-                    <option>Iné</option>
+                <label for="cathegory_filter">Kategória</label>
+                <select class="form-control" id="cathegory_filter" name="cathegory">
+                    @foreach ($cathegories as $cathegory)
+                        <option value="{{$cathegory->id}}">{{ $cathegory->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
-        <button id="filter" class="btn btn-light col-md-4 offset-md-4">Vyhľadať</button>
+        <button id="filter" class="btn btn-light col-md-4 offset-md-4" type="submit">Vyhľadať</button>
     </form>
 
     <div id="products" class="table-responsive">
