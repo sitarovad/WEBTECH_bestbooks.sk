@@ -18,4 +18,16 @@ class Book extends Model
         'code',
         'quantity',
         'rating'];
+
+    public function subcathegory() {
+        return $this->belongsTo('App\Subcathegory');
+    }
+
+    public function language() {
+        return $this->belongsTo('App\Language');
+    }
+
+    public function availability() {
+        return $this->belongsTo('App\Availability');
+    }
 }
