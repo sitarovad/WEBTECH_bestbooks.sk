@@ -1,27 +1,37 @@
 <div class="navbar">
-    <span class="navbar-brand mb-0 h1">BestBooks.sk</span>
+    <span class="navbar-brand mb-0 h1"><a href="/">BestBooks.sk</a></span>
     <form class="form-inline">
         <input class="form-control" type="search" placeholder="Hľadám..." aria-label="Vyhľadávanie">
     </form>
     <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <button type="button" class="btn btn-light" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<form id='sign-in-form'>
-                                    <div class='form-group'>
-                                        <label for='login'>E-mail</label>
-                                        <input type='email' class='form-control' id='login'>
-                                    </div>
-                                    <div class='form-group'>
-                                        <label for='psswd'>Heslo</label>
-                                        <input type='password' class='form-control' id='psswd'>
-                                    </div>
-                                    <button id='admin-sign' type='submit' class='btn btn-light text-center col-md-12'>Prihlásiť</button>
-                                </form>
-                                <hr>
-                                <button id='reg' type='submit' class='btn btn-light text-center col-md-12'>Registrovať sa</button>"
-                    data-html="true">
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i> Prihlásiť sa
-            </button>
-        </li>
+        <!-- Authentication Links -->
+        @guest
+            <li class="nav-item">
+                <a class="nav-link btn btn-light" href="{{ route('login') }}">Prihlásiť sa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-light" href="{{ route('register') }}">Registrovať sa</a>
+            </li>
+        @else
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                        Odhlásiť sa
+                    </a>
+                    <a class="dropdown-item" href="/books">Administrátrské rozhranie</a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
+        @endguest
         <li class="nav-item">
             <button type="button" class="btn btn-info">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i> Košík</button>

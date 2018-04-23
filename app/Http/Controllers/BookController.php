@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Language;
+use App\Availability;
+use App\Cathegory;
+use App\Subcathegory;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -25,7 +29,13 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        $languages = Language::all();
+        $availabilities = Availability::all();
+        $cathegories = Cathegory::all();
+        return view('books.create',
+            ['languages' => $languages,
+            'availabilities' => $availabilities,
+            'cathegories' => $cathegories]);
     }
 
     /**
@@ -38,6 +48,7 @@ class BookController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'author' => 'required',
             'description' => 'required',
             'publisher' => 'required',
             'price' => 'required',
@@ -52,6 +63,7 @@ class BookController extends Controller
 
         $book = Book::create([
             'title' => $request->title,
+            'author' => $request->author,
             'content' => $request->description,
             'publisher' => $request->publisher,
             'price' => $request->price,
@@ -102,6 +114,7 @@ class BookController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'author' => 'required',
             'description' => 'required',
             'publisher' => 'required',
             'price' => 'required',
@@ -116,6 +129,7 @@ class BookController extends Controller
 
         $book->title = $request->title;
         $book->content = $request->description;
+        $book->author = $request->author;
         $book->publisher = $request->publisher;
         $book->price = $request->price;
         $book->publish_year = $request->publish_year;

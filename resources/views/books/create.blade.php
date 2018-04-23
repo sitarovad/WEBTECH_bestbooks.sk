@@ -9,6 +9,10 @@
             <input type="text" class="form-control" id="title" name="title">
         </div>
         <div class="form-group">
+            <label for="author">Autor</label>
+            <input type="text" class="form-control" id="author" name="author">
+        </div>
+        <div class="form-group">
             <label for="content">Popis</label>
             <textarea class="form-control" id="content" name="description" rows="5"></textarea>
         </div>
@@ -16,24 +20,30 @@
             <label for="publisher">Vydavateľstvo</label>
             <input type="text" class="form-control" id="publisher" name="publisher">
         </div>
-
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="year">Rok vydania</label>
-                <input type="date" class="form-control" id="year" name="publish_year">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="language">Jazyk</label>
-                <select class="form-control" id="language">
-                    <option>slovenský</option>
-                    <option>český</option>
-                    <option>anglický</option>
-                    <option>nemecký</option>
-                    <option>španielsky</option>
+                <label for="cathegory">Kategória</label>
+                <select class="form-control" id="cathegory" name="cathegory">
+                    @foreach ($cathegories as $cathegory)
+                        <option value="{{$cathegory->id}}">{{ $cathegory->name }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
-
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="quantity">Množstvo</label>
+                <input type="number" class="form-control" id="quantity" name="quantity">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="language">Jazyk</label>
+                <select class="form-control" id="language" name="language">
+                    @foreach ($languages as $language)
+                        <option value="{{$language->id}}">{{ $language->label }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="pages">Počet strán</label>
@@ -69,10 +79,10 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="availability">Dostupnosť</label>
-                <select class="form-control" id="availability">
-                    <option>na sklade</option>
-                    <option>vypredané</option>
-                    <option>predpredaj</option>
+                <select class="form-control" id="availability" name="availability">
+                    @foreach ($availabilities as $availability)
+                        <option value="{{$availability->id}}">{{ $availability->label }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

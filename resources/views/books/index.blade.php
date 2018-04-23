@@ -49,6 +49,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Kód</th>
                 <th scope="col">Názov</th>
+                <th scope="col">Autor</th>
                 <th scope="col">Množstvo</th>
                 <th scope="col">Akcia</th>
             </tr>
@@ -59,6 +60,7 @@
                 <th scope="row">{{$book->id}}</th>
                 <td>{{$book->code}}</td>
                 <td><a href="/books/{{$book->id}}"></a>{{$book->title}}</td>
+                <td>{{$book->author}}</td>
                 <td>{{$book->quantity}}</td>
                 <td>
                     <div class="btn-group" role="group">

@@ -28,7 +28,7 @@
                 <h1>Novinky</h1>
                 <div class="container">
                     <div class="row">
-                        <div class="card">
+                        <div class="my_card">
                             <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                             <div class="card-body justify-center">
                                 <h5 class="card-title">Noc</h5>
@@ -36,7 +36,7 @@
                                 <p class="card-text price">14,02 €</p>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="my_card">
                             <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                             <div class="card-body justify-center">
                                 <h5 class="card-title">Noc</h5>
@@ -44,7 +44,7 @@
                                 <p class="card-text price">14,02 €</p>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="my_card">
                             <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                             <div class="card-body justify-center">
                                 <h5 class="card-title">Noc</h5>
@@ -52,7 +52,7 @@
                                 <p class="card-text price">14,02 €</p>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="my_card">
                             <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                             <div class="card-body justify-center">
                                 <h5 class="card-title">Noc</h5>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="card">
+                        <div class="my_card">
                             <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                             <div class="card-body justify-center">
                                 <h5 class="card-title">Noc</h5>
@@ -72,7 +72,7 @@
                                 <p class="card-text price">14,02 €</p>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="my_card">
                             <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                             <div class="card-body justify-center">
                                 <h5 class="card-title">Noc</h5>
@@ -80,7 +80,7 @@
                                 <p class="card-text price">14,02 €</p>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="my_card">
                             <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                             <div class="card-body justify-center">
                                 <h5 class="card-title">Noc</h5>
@@ -88,7 +88,7 @@
                                 <p class="card-text price">14,02 €</p>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="my_card">
                             <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                             <div class="card-body justify-center">
                                 <h5 class="card-title">Noc</h5>
@@ -181,7 +181,7 @@
         <h2>Odporúčame</h2>
         <div class="container">
             <div class="row">
-                <div class="card">
+                <div class="my_card">
                     <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                     <div class="card-body justify-center">
                         <h5 class="card-title">Noc</h5>
@@ -189,7 +189,7 @@
                         <p class="card-text price">14,02 €</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="my_card">
                     <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                     <div class="card-body justify-center">
                         <h5 class="card-title">Noc</h5>
@@ -197,7 +197,7 @@
                         <p class="card-text price">14,02 €</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="my_card">
                     <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                     <div class="card-body justify-center">
                         <h5 class="card-title">Noc</h5>
@@ -205,7 +205,7 @@
                         <p class="card-text price">14,02 €</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="my_card">
                     <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                     <div class="card-body justify-center">
                         <h5 class="card-title">Noc</h5>
@@ -213,7 +213,7 @@
                         <p class="card-text price">14,02 €</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="my_card">
                     <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                     <div class="card-body justify-center">
                         <h5 class="card-title">Noc</h5>
@@ -221,7 +221,7 @@
                         <p class="card-text price">14,02 €</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="my_card">
                     <img class="card-img-top" src="{{ asset('images/book.png') }}" alt="Obalka knihy Noc">
                     <div class="card-body justify-center">
                         <h5 class="card-title">Noc</h5>

@@ -1,5 +1,5 @@
 <nav id="nav-admin" class="navbar navbar-expand-lg navbar-light">
-    <span class="navbar-brand mb-0 h1">BestBooks.sk</span>
+    <span class="navbar-brand mb-0 h1"><a href="/">BestBooks.sk</a></span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

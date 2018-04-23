@@ -34,7 +34,7 @@ a {
     font-size: x-large
 }
 
-.card {
+.my_card {
     width: 10rem;
     margin-bottom: 15px;
     margin-right: 10px
@@ -341,4 +341,8 @@ section#chat {
 .fa-pencil,
 .fa-trash-o {
     margin-right: 5px;
+}
+
+.login_card {
+    margin-top: 20px;
 }

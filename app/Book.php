@@ -8,6 +8,7 @@ class Book extends Model
 {
     protected $fillable = [
         'title',
+        'author',
         'content',
         'publisher',
         'price',
