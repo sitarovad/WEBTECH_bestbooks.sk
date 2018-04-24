@@ -1,7 +1,8 @@
 <div class="navbar">
     <span class="navbar-brand mb-0 h1"><a href="/">BestBooks.sk</a></span>
-    <form class="form-inline">
-        <input class="form-control" type="search" placeholder="Hľadám..." aria-label="Vyhľadávanie">
+    <form class="form-inline" method="GET" action="{{route('search')}}">
+        <input class="form-control" type="search" placeholder="Hľadám..." aria-label="Vyhľadávanie" name="search">
+        <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
     </form>
     <ul class="nav justify-content-end">
         <!-- Authentication Links -->
@@ -46,39 +47,11 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarCathegories">
         <ul class="navbar-nav">
+            @foreach($cathegories as $cathegory)
             <li class="nav-item">
-                <a class="nav-link" href="#">Beletria</a>
+                <a class="nav-link" href="#">{{$cathegory->name}}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pre deti a mládež</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Životopisné</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Cudzojazyčné</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">História</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Umenie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Voľný čas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Cestovanie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Zdravie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Učebnice</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Viac</a>
-            </li>
+            @endforeach
         </ul>
     </div>
 </nav>

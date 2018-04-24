@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('landing_page');
-});
+});*/
 
 Route::resource('books', 'BookController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/getsubcategories', 'BookController@getSubcathegories');
 Route::get('/filter', 'BookController@filter')->name('filter');
+Route::get('/search', 'HomeController@search')->name('search');
