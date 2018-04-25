@@ -31,18 +31,36 @@ class ShoppingController extends Controller
         $card_items = $request->session()->get('books');
 
         $total_price = 0;
-        foreach($card_items as $item) {
-            $total_price += $item->price*$item->count;
+        if(isset($card_items)){
+            foreach($card_items as $item) {
+                $total_price += $item->price*$item->count;
+            }
         }
         return view('shopping.card', ['books' => $card_items,
             'total_price' => $total_price]);
     }
 
-    public function shipping() {
+    public function shipping(Request $request) {
+        $books = $request->session()->get('books');
+
+        $counts = $request->count;
+
+        for($i = 0; $i < count($books); $i++){
+            $books[$i]->count = $counts[$i];
+        }
+
+        $request->session()->put('books', $books);
+
+        return redirect('card/showShipping');
+
+    }
+
+    public function showShipping() {
         $shippings = Shipping::all();
         $payments = Payment::all();
 
-        return view ('shopping.shipping', ['shippings' => $shippings,
+        return view ('shopping.shipping', [
+            'shippings' => $shippings,
             'payments' => $payments]);
     }
 
@@ -103,5 +121,19 @@ class ShoppingController extends Controller
             'total_price' => $total_price,
         ]);
 
+    }
+
+    public function destroy($book_id, Request $request) {
+        $books = $request->session()->get('books');
+
+        for($i = 0; $i < count($books); $i++) {
+            if ($book_id == $books[$i]->book_id){
+                array_splice($books, $i, 1);
+            }
+        }
+
+        $request->session()->put('books', $books);
+
+        return redirect('/card');
     }
 }

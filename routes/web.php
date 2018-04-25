@@ -18,6 +18,7 @@
 //Route::resource('books', 'BookController');
 Auth::routes();
 
+Route::post('/card/counts', 'ShoppingController@shipping');
 Route::get('books/', 'BookController@index')->middleware('admin');
 Route::get('books/create/', 'BookController@create')->middleware('admin');
 Route::post('books/', 'BookController@store')->middleware('admin');
@@ -41,9 +42,11 @@ Route::get('/card/delivery_data', 'ShoppingController@deliveryData');
 Route::post('/card/summary', 'ShoppingController@storeData');
 Route::get('/card/summary', 'ShoppingController@show');
 Route::get('/card', 'ShoppingController@index');
-Route::get('/card/shipping', 'ShoppingController@shipping');
 Route::get('/card/confirmation', 'OrderController@store');
+Route::get('/card/showShipping', 'ShoppingController@showShipping');
+Route::delete('/card/delete/{book_id}', 'ShoppingController@destroy');
 Route::get('/card/{book_id}', 'ShoppingController@store');
+
 
 
 

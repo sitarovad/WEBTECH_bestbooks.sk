@@ -19,3 +19,18 @@ function GetSubcategoriesOf(cathegory) {
             console.log("xhr=" + xhr + " b=" + b + " c=" + c);
         }
     })};
+
+$('.count_of_products').change(function(event) {
+    var total_price = 0;
+    var count = $(event.target).val();
+    $(event.target)[0].setAttribute("value", count);
+    var price_of_single_product = parseFloat($(event.target).parent().next().children()[1].textContent);
+    $(event.target).parent().next().next().children()[1].textContent = (price_of_single_product * count) + '€';
+
+    var prices = $('.total-price-for-book');
+    for(var i = 0; i < prices.length; i++) {
+        var pr = parseFloat(prices[i].textContent);
+        total_price += pr;
+    }
+    $('#total-price')[0].textContent = 'Spolu: ' + total_price + ' €';
+});
