@@ -27,7 +27,7 @@
             <h1>{{$book->title}}</h1>
             <p id="author">{{$book->author}}</p>
             <p id="price-detail">{{$book->price}} €</p>
-            <button id="add-button" type="button" class="btn btn-light">Vložiť do košíka</button>
+            <a id="add-button" class="btn btn-light" href="/card/{{$book->id}}">Vložiť do košíka</a>
             <p id="content-detail">{{$book->content}}</p>
         </div>
     </div>

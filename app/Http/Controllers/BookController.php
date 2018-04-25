@@ -20,7 +20,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::paginate(6);
         $cathegories = Cathegory::all();
         return view('books.index',['books' => $books,
             'cathegories' => $cathegories]);
@@ -195,14 +195,117 @@ class BookController extends Controller
     public function filter(Request $request) {
         $cathegory_id = Input::get('cathegory');
         $cathegory = Cathegory::find($cathegory_id);
-        $books = $cathegory->books;
+        $books = $cathegory->books()->paginate(6);
         $cathegories = Cathegory::all();
         if($request->title) {
-            $title = Input::get('title');
-            $books = $cathegory->books()->where('title', 'LIKE', '%' . Input::get('title') . '%')->get();
+            $books = $cathegory->books()->where('title', 'ilike', '%' . Input::get('title') . '%')->paginate(6);
         }
         return view('books.index',['books' => $books,
             'cathegories' => $cathegories]);
+
+    }
+
+    public function cathegoryIndex($cathegory_id) {
+        $cathegory = Cathegory::find($cathegory_id);
+        $books = $cathegory->books()->paginate(4);
+        $subcathegories = $cathegory->subcathegories;
+        $authors = $cathegory->books()->select('author')->take(6)->get();
+        $languages = Language::all();
+
+        return view('books.cathegory', [
+            'cathegory' => $cathegory,
+            'books' => $books,
+            'subcathegories' => $subcathegories,
+            'authors' => $authors,
+            'languages' => $languages,
+        ]);
+    }
+
+    public function subcathegoryIndex($subcathegory_id) {
+        $subcathegory = Subcathegory::find($subcathegory_id);
+        $cathegory = $subcathegory->cathegory;
+        $books = $subcathegory->books()->paginate(4);
+        $subcathegories = $cathegory->subcathegories;
+        $authors = $subcathegory->books()->select('author')->take(6)->get();
+
+        return view('books.subcathegory', [
+            'cathegory' => $cathegory,
+            'books' => $books,
+            'subcathegories' => $subcathegories,
+            'subcathegory' => $subcathegory,
+            'authors' => $authors,
+        ]);
+    }
+
+    public function cathegoryFilter(Request $request, $cathegory_id){
+        $cathegory = Cathegory::find($cathegory_id);
+        $subcathegories = $cathegory->subcathegories;
+        $authors = $cathegory->books()->select('author')->take(6)->get();
+
+        if($request->order == 'author_asc')
+            $books = $cathegory->books()->orderBy('author', 'asc');
+        elseif($request->order == 'author_desc')
+            $books = $cathegory->books()->orderBy('author', 'dec');
+        elseif($request->order == 'price_asc')
+            $books = $cathegory->books()->orderBy('price', 'asc');
+        elseif($request->order == 'price_desc')
+            $books = $cathegory->books()->orderBy('price', 'desc');
+        else
+            $books = $cathegory->books()->orderBy('publish_year');
+
+        if(Input::get('authors')){
+            $books=$books->where(function ($query){
+                foreach(Input::get('authors') as $item) {
+                    $query->orWhere('author', '=', $item);
+                }
+            });
+        }
+
+        $books = $books->paginate(4);
+
+        return view('books.cathegory', [
+            'cathegory' => $cathegory,
+            'books' => $books,
+            'subcathegories' => $subcathegories,
+            'authors' => $authors,
+        ]);
+    }
+
+    public function subcathegoryFilter(Request $request, $subcathegory_id){
+        $subcathegory = Subcathegory::find($subcathegory_id);
+        $cathegory = $subcathegory->cathegory;
+        $subcathegories = $cathegory->subcathegories;
+        $authors = $subcathegory->books()->select('author')->take(6)->get();
+        $books_test = $subcathegory->books()->get();
+
+        if($request->order == 'author_asc')
+            $books = $subcathegory->books()->orderBy('author', 'asc');
+        elseif($request->order == 'author_desc')
+            $books = $subcathegory->books()->orderBy('author', 'dec');
+        elseif($request->order == 'price_asc')
+            $books = $subcathegory->books()->orderBy('price', 'asc');
+        elseif($request->order == 'price_desc')
+            $books = $subcathegory->books()->orderBy('price', 'desc');
+        else
+            $books = $subcathegory->books()->orderBy('publish_year');
+
+        if(Input::get('authors')){
+            $books=$books->where(function ($query){
+                foreach(Input::get('authors') as $item) {
+                    $query->orWhere('author', '=', $item);
+                }
+            });
+        }
+
+        $books = $books->paginate(4);
+
+        return view('books.subcathegory', [
+            'cathegory' => $cathegory,
+            'books' => $books,
+            'subcathegories' => $subcathegories,
+            'subcathegory' => $subcathegory,
+            'authors' => $authors,
+        ]);
 
     }
 }

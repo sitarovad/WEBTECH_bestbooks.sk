@@ -35,8 +35,8 @@
             </li>
         @endguest
         <li class="nav-item">
-            <button type="button" class="btn btn-info">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Košík</button>
+            <a class="btn btn-info" href="/card">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Košík</a>
         </li>
     </ul>
 </div>
@@ -49,7 +49,7 @@
         <ul class="navbar-nav">
             @foreach($cathegories as $cathegory)
             <li class="nav-item">
-                <a class="nav-link" href="#">{{$cathegory->name}}</a>
+                <a class="nav-link" href="/cathegory/{{$cathegory->id}}">{{$cathegory->name}}</a>
             </li>
             @endforeach
         </ul>

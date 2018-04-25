@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -31,14 +32,13 @@ class HomeController extends Controller
 
     public function search(Request $request){
         $search = Input::get('search');
-        $books = Book::where('title', 'LIKE', '%' . $search . '%')->get();
-        /*$books_author_asc = Book::where('title', 'LIKE', '%' . $search . '%')->orderBy('author', 'asc')->get();
-        $books_author_desc = Book::where('title', 'LIKE', '%' . $search . '%')->orderBy('author', 'desc')->get();
-        $books_price_asc = Book::where('title', 'LIKE', '%' . $search . '%')->orderBy('price', 'asc')->get();
-        $books_price_desc = Book::where('title', 'LIKE', '%' . $search . '%')->orderBy('price', 'desc')->get();
-        $books_year = Book::where('title', 'LIKE', '%' . $search . '%')->orderBy('publish_year', 'desc')->get();*/
+        $books = Book::where('title', 'ilike', '%' . $search . '%')
+            ->orWhere('author', 'ilike', '%' . $search . '%')
+            ->paginate(4);
 
-
-        return view ('books.book_list', ['search'=> $search, 'books' => $books]);
+        return view ('books.book_list', [
+            'search'=> $search,
+            'books' => $books,
+        ]);
     }
 }
